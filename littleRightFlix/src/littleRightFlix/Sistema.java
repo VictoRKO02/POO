@@ -2,6 +2,10 @@ package littleRightFlix;
 
 import interfaces.GerenciadorConteudo;
 import model.*;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -10,7 +14,7 @@ public class Sistema implements GerenciadorConteudo {
     private List<Midia> midias = new ArrayList<>();
     private Scanner scanner = new Scanner(System.in);
     
-    public void exibirAsciiArt() {
+    public static void exibirAsciiArt() {
 	System.out.println("  ######  ######   ##   ##           ##   ##   ####    ##   ##  #####     #####      ##      ##       ##            ##      #####           ##        ####    ######   ######   ####     #######   #######     ####      ####   ##   ##  ######       #####   ####      ####    ##  ##     ##");
 	System.out.println("  ##  ##  ##       ### ###           ##   ##    ##     ###  ##   ## ##   ##   ##    ##      ####       ##          ####    ##   ##          ##         ##     # ## #   # ## #    ##      ##        #     ##     ##      ##  ##  ##   ##  # ## #       ###      ##        ##     ##  ##     ##");
 	System.out.println("  ##   #  ##       #######            ## ##     ##     #### ##   ##  ##  ##   ##   ##      ##  ##       ##        ##  ##   ##   ##          ##         ##       ##       ##      ##      ##        #     ##     ##     ##       ##   ##    ##         ##       ##        ##      ####      ##");
@@ -44,5 +48,54 @@ public class Sistema implements GerenciadorConteudo {
         }
         return null; // Retorna null se não encontrar
     }
+    
+    
+    public static void abrirVideo(String caminhoArquivo) {
+        try {
+            String comando = "cmd /c start \"\" \"" + caminhoArquivo + "\"";
+            Runtime.getRuntime().exec(comando);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+      public static void listarFilmes() {
+    	  BufferedReader br = null;
+  		  FileReader fr = null;
+  		 String caminhoFilmes = "C:\\Users\\DELL\\Desktop\\LittleFlix\\Filmes\\filmes.txt"; 
+    	  
+    	  try {
+  			fr = new FileReader(caminhoFilmes);
+  			br = new BufferedReader(fr);
+  			String linha = br.readLine();
+  			int i = 1;
+  			while (linha != null) {                              
 
-}
+  				System.out.println(i+": "+linha);
+  				linha = br.readLine();
+  				i++;
+  			}
+  		} catch (IOException e) {
+  			System.out.println("Erro: " + e.getMessage());
+  		} finally {
+  			try {
+  				if (br != null)
+  					br.close();
+  				if (fr != null)
+  					fr.close();
+  			} catch (IOException e) {
+  				e.printStackTrace();
+  			}
+  		}
+    	  
+    	  
+    	
+      
+    
+    
+    
+    
+    
+    
+    
+
+}}

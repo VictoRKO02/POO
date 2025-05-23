@@ -1,9 +1,13 @@
 package model;
 
+import java.util.List;
+
+
 public class Serie extends Midia {
     private int temporadas;
     private int episodiosPorTemporada;
-
+    private List<Episodio> episodios;
+    
     public Serie(String titulo, String genero, int ano, int temporadas, int episodiosPorTemporada) {
         super(titulo, genero, ano);
         this.temporadas = temporadas;

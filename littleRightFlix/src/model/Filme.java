@@ -3,6 +3,7 @@ package model;
 public class Filme extends Midia {
     private String diretor;
     private int duracaoMinutos;
+    private String diretorio;
 
     public Filme(String titulo, String genero, int ano, String diretor, int duracaoMinutos) {
         super(titulo, genero, ano);
