@@ -10,15 +10,32 @@ public abstract class Midia {
 		this.genero = genero;
 		this.ano = ano;
 	}
+
 	public abstract String getDescricao();
-	
-	public String getTitulo() { 
+
+	// Getters existentes
+	public String getTitulo() {
 		return titulo;
 	}
+
 	public String getGenero() {
 		return genero;
 	}
-	public int getAno() {
+
+	public int getAnoLancamento() {
 		return ano;
+	}
+
+	// Setters que estavam faltando
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+	public void setGenero(String genero) {
+		this.genero = genero;
+	}
+
+	public void setAnoLancamento(int ano) {
+		this.ano = ano;
 	}
 }

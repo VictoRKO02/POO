@@ -24,7 +24,7 @@ O sistema é desenvolvido por um grupo de 4 estudantes e tem como proposta simul
 ## 👥 Equipe de Desenvolvimento
 
 - Victor Mendes Ferreira Bittencourt  
-- [Nome do Integrante 2]  
+- Leo Thirso Pinto de Freitas e Souza  
 - [Nome do Integrante 3]  
 - [Nome do Integrante 4]
 

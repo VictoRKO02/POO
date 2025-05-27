@@ -13,7 +13,31 @@ public class Filme extends Midia {
 
     @Override
     public String getDescricao() {
-        return String.format("Filme: %s (%d), %s, Diretor: %s, %d min", 
-               getTitulo(), getAno(), getGenero(), diretor, duracaoMinutos);
+        return String.format("Filme: %s (%d), %s, Diretor: %s, %d min",
+                getTitulo(), getAnoLancamento(), getGenero(), diretor, duracaoMinutos);
+    }
+
+    public String getDiretor() {
+        return diretor;
+    }
+
+    public void setDiretor(String diretor) {
+        this.diretor = diretor;
+    }
+
+    public int getDuracaoMinutos() {
+        return duracaoMinutos;
+    }
+
+    public void setDuracaoMinutos(int duracaoMinutos) {
+        this.duracaoMinutos = duracaoMinutos;
+    }
+
+    public String getDiretorio() {
+        return diretorio;
+    }
+
+    public void setDiretorio(String diretorio) {
+        this.diretorio = diretorio;
     }
 }
