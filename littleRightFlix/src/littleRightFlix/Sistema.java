@@ -1,16 +1,16 @@
 package littleRightFlix;
 
 import interfaces.GerenciadorConteudo;
-import model.*; // Assume que Midia, Filme, Serie estão neste pacote
+import model.*;
 
 import java.io.BufferedReader;
-import java.io.File; // Import necessário
-import java.io.FileInputStream; // Import necessário
-import java.io.FileOutputStream; // Import necessário
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.ObjectInputStream; // Import necessário
-import java.io.ObjectOutputStream; // Import necessário
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -175,7 +175,6 @@ public class Sistema implements GerenciadorConteudo {
         return new ArrayList<>(this.midias); // Retorna cópia
     }
 
-    // ... (listarApenasFilmes, listarApenasSeries, buscarPorTitulo permanecem os mesmos) ...
     public void listarApenasFilmes() {
         System.out.println("\n--- FILMES NO CATÁLOGO ---");
         boolean encontrou = false;

@@ -1,9 +1,9 @@
 package littleRightFlix;
 
-import java.util.List; // Para a lista de títulos de filmes do arquivo txt
+import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
-import model.Midia; // Midia é útil para o tipo de retorno de buscarPorTitulo.
+import model.Midia;
 
 public class Programa {
 
