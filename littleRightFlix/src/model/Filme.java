@@ -1,9 +1,14 @@
 package model;
 
-public class Filme extends Midia {
+import java.io.Serializable; // Importar Serializable
+
+public class Filme extends Midia implements Serializable { // Implementar Serializable (embora herdado, é bom ser explícito)
+
+    private static final long serialVersionUID = 3L; // UID para Filme
+
     private String diretor;
     private int duracaoMinutos;
-    private String diretorio;
+    private String diretorio; // Campo que já existia
 
     public Filme(String titulo, String genero, int ano, String diretor, int duracaoMinutos) {
         super(titulo, genero, ano);
@@ -13,10 +18,11 @@ public class Filme extends Midia {
 
     @Override
     public String getDescricao() {
-        return String.format("Filme: %s (%d), %s, Diretor: %s, %d min",
+        return String.format("Filme: %s (%d), Gênero: %s, Diretor: %s, Duração: %d min",
                 getTitulo(), getAnoLancamento(), getGenero(), diretor, duracaoMinutos);
     }
 
+    // Getters e Setters para os campos específicos de Filme
     public String getDiretor() {
         return diretor;
     }

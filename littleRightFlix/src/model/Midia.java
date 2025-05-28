@@ -1,11 +1,17 @@
 package model;
 
-public abstract class Midia {
+import java.io.Serializable; // 1. Importar Serializable
+
+public abstract class Midia implements Serializable { // 2. Implementar Serializable
+
+	// 3. Adicionar serialVersionUID
+	private static final long serialVersionUID = 2L; // Usando um ID diferente para esta classe
+
 	private String titulo;
 	private String genero;
 	private int ano;
 
-	public Midia (String titulo, String genero, int ano) {
+	public Midia(String titulo, String genero, int ano) {
 		this.titulo = titulo;
 		this.genero = genero;
 		this.ano = ano;
@@ -13,7 +19,6 @@ public abstract class Midia {
 
 	public abstract String getDescricao();
 
-	// Getters existentes
 	public String getTitulo() {
 		return titulo;
 	}
@@ -26,7 +31,6 @@ public abstract class Midia {
 		return ano;
 	}
 
-	// Setters que estavam faltando
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}

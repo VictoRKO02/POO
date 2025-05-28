@@ -1,37 +1,32 @@
 package model;
 
+import java.io.Serializable; // Importar Serializable
+import java.util.ArrayList;
 import java.util.List;
 
-public class Serie extends Midia {
+public class Serie extends Midia implements Serializable { // Implementar Serializable
+
+    private static final long serialVersionUID = 4L; // UID para Serie
+
     private int temporadas;
-    private int episodiosPorTemporada;
-    private List<Episodio> episodios;
+    private int episodiosPorTemporada; // Média de episódios por temporada
+    private List<Episodio> episodiosAdicionados;
 
     public Serie(String titulo, String genero, int ano, int temporadas, int episodiosPorTemporada) {
         super(titulo, genero, ano);
         this.temporadas = temporadas;
         this.episodiosPorTemporada = episodiosPorTemporada;
+        this.episodiosAdicionados = new ArrayList<>(); // Importante inicializar
     }
 
-    @Override
-    public String getDescricao() {
-        return String.format("Série: %s (%d), %s, %d temporadas (%d episódios)",
-                getTitulo(), getAnoLancamento(), getGenero(),
-                this.temporadas,
-                episodiosPorTemporada);
-    }
-
-    // Getter para temporadas
-    public int getNumeroTemporadas() { // Nome do método que Sistema.java espera
+    public int getNumeroTemporadas() {
         return temporadas;
     }
 
-    // Setter para temporadas
     public void setNumeroTemporadas(int temporadas) {
         this.temporadas = temporadas;
     }
 
-    // Getter e Setter para episodiosPorTemporada
     public int getEpisodiosPorTemporada() {
         return episodiosPorTemporada;
     }
@@ -40,12 +35,42 @@ public class Serie extends Midia {
         this.episodiosPorTemporada = episodiosPorTemporada;
     }
 
-    // Getter e Setter para a lista de episódios (opcional, mas boa prática se for usado)
-    public List<Episodio> getEpisodios() {
-        return episodios;
+    public void adicionarEpisodio(Episodio episodio) {
+        if (episodio != null) {
+            this.episodiosAdicionados.add(episodio);
+        }
     }
 
-    public void setEpisodios(List<Episodio> episodios) {
-        this.episodios = episodios;
+    public List<Episodio> getEpisodiosAdicionados() {
+        return new ArrayList<>(episodiosAdicionados); // Retorna cópia
+    }
+
+    public void setEpisodiosAdicionados(List<Episodio> episodios) {
+        this.episodiosAdicionados = new ArrayList<>(episodios);
+    }
+
+    @Override
+    public String getDescricao() {
+        StringBuilder descricao = new StringBuilder();
+        descricao.append(String.format("Série: %s (%d), Gênero: %s, %d temporadas (%d eps/temp em média)",
+                getTitulo(), getAnoLancamento(), getGenero(),
+                temporadas, episodiosPorTemporada));
+
+        if (this.episodiosAdicionados != null && !this.episodiosAdicionados.isEmpty()) {
+            descricao.append(String.format(". Contém %d episódio(s) cadastrado(s):", this.episodiosAdicionados.size()));
+            int count = 0;
+            for (Episodio ep : this.episodiosAdicionados) {
+                if (count < 3) {
+                    descricao.append(String.format("\n  - %s", ep.toString()));
+                    count++;
+                } else {
+                    descricao.append("\n  - ...e mais.");
+                    break;
+                }
+            }
+        } else {
+            descricao.append(". Nenhum episódio cadastrado ainda.");
+        }
+        return descricao.toString();
     }
 }
