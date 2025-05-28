@@ -1,9 +1,9 @@
 package littleRightFlix;
 
-import java.util.List; // Para a lista de títulos de filmes do arquivo txt
+import java.util.List; 
 import java.util.Locale;
 import java.util.Scanner;
-import model.Filme; // Ainda pode ser útil para casting ou tipos específicos
+import model.Filme; 
 import model.Midia;
 import model.Serie;
 
@@ -119,7 +119,7 @@ public class Programa {
 		System.out.println("7. Listar Apenas Séries");
 		System.out.println("8. Buscar Mídia por Título");
 		System.out.println("9. Listar Todas as Mídias Ordenadas por Título");
-		System.out.println("10. Tentar Abrir Vídeo de Filme (da lista .txt)"); // Funcionalidade extra
+		System.out.println("10. Tentar Abrir Vídeo de Filme (da lista .txt)"); 
 		System.out.println("0. Sair");
 		System.out.print("Escolha uma opção: ");
 	}
