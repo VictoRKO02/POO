@@ -1,7 +1,7 @@
 package littleRightFlix;
 
 import interfaces.GerenciadorConteudo;
-import model.*; // Assume que Midia, Filme, Serie estão neste pacote
+import model.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -84,7 +84,7 @@ public class Sistema implements GerenciadorConteudo {
                 String tipo = "";
                 String detalhesEspecificos = "";
                 if (midia instanceof Filme) {
-                    tipo = "Film"; // Mantido "Film" para consistência de largura com "Série"
+                    tipo = "Film"; 
                     Filme filme = (Filme) midia;
                     detalhesEspecificos = "Dir: " + filme.getDiretor() + ", " + filme.getDuracaoMinutos() + " min";
                 } else if (midia instanceof Serie) {
@@ -328,7 +328,7 @@ public class Sistema implements GerenciadorConteudo {
             try {
                 int novoAno = Integer.parseInt(novoAnoStr);
                 if (novoAno == 0) {
-                    // Nenhuma alteração se for 0 explicitamente
+                    
                 } else if (novoAno > 1800 && novoAno < 2100) { // Validação simples de ano
                     midiaParaAlterar.setAnoLancamento(novoAno);
                 } else {
@@ -354,7 +354,7 @@ public class Sistema implements GerenciadorConteudo {
                 try {
                     int novaDuracao = Integer.parseInt(novaDuracaoStr);
                     if (novaDuracao == 0) {
-                        // Nenhuma alteração
+                        
                     } else if (novaDuracao > 0) {
                         filme.setDuracaoMinutos(novaDuracao);
                     } else {
@@ -372,7 +372,7 @@ public class Sistema implements GerenciadorConteudo {
                 try {
                     int novasTemporadas = Integer.parseInt(novasTemporadasStr);
                     if (novasTemporadas == 0) {
-                        // Nenhuma alteração
+                    
                     } else if (novasTemporadas > 0) {
                         serie.setNumeroTemporadas(novasTemporadas);
                     } else {
@@ -389,7 +389,7 @@ public class Sistema implements GerenciadorConteudo {
                 try {
                     int novosEpisodios = Integer.parseInt(novosEpisodiosStr);
                     if (novosEpisodios == 0) {
-                        // Nenhuma alteração
+                       
                     } else if (novosEpisodios > 0) {
                         serie.setEpisodiosPorTemporada(novosEpisodios);
                     } else {
