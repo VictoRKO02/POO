@@ -1,76 +1,71 @@
 package model;
 
-import java.io.Serializable; // Importar Serializable
 import java.util.ArrayList;
 import java.util.List;
 
-public class Serie extends Midia implements Serializable { // Implementar Serializable
+public class Serie extends Midia {
+    private int numTemporadas;
+    private int episodiosPorTemporada;
+    private List<Episodio> episodios;
 
-    private static final long serialVersionUID = 4L; // UID para Serie
-
-    private int temporadas;
-    private int episodiosPorTemporada; // Média de episódios por temporada
-    private List<Episodio> episodiosAdicionados;
-
-    public Serie(String titulo, String genero, int ano, int temporadas, int episodiosPorTemporada) {
+    public Serie(String titulo, String genero, int ano, int numTemporadas, int episodiosPorTemporada) {
         super(titulo, genero, ano);
-        this.temporadas = temporadas;
+        this.numTemporadas = numTemporadas;
         this.episodiosPorTemporada = episodiosPorTemporada;
-        this.episodiosAdicionados = new ArrayList<>(); // Importante inicializar
+        this.episodios = new ArrayList<>();
     }
 
-    public int getNumeroTemporadas() {
-        return temporadas;
+    public void adicionarEpisodio(Episodio ep) {
+        episodios.add(ep);
     }
 
-    public void setNumeroTemporadas(int temporadas) {
-        this.temporadas = temporadas;
+    public void removerEpisodio(Episodio ep) {
+        episodios.remove(ep);
+    }
+
+    public List<Episodio> getEpisodiosAdicionados() {
+        return episodios;
+    }
+
+    public int getNumTemporadas() {
+        return numTemporadas;
     }
 
     public int getEpisodiosPorTemporada() {
         return episodiosPorTemporada;
     }
 
+    public void setNumTemporadas(int numTemporadas) {
+        this.numTemporadas = numTemporadas;
+    }
+
     public void setEpisodiosPorTemporada(int episodiosPorTemporada) {
         this.episodiosPorTemporada = episodiosPorTemporada;
     }
 
-    public void adicionarEpisodio(Episodio episodio) {
-        if (episodio != null) {
-            this.episodiosAdicionados.add(episodio);
-        }
-    }
-
-    public List<Episodio> getEpisodiosAdicionados() {
-        return new ArrayList<>(episodiosAdicionados); // Retorna cópia
-    }
-
-    public void setEpisodiosAdicionados(List<Episodio> episodios) {
-        this.episodiosAdicionados = new ArrayList<>(episodios);
+    @Override
+    public String getDescricao() {
+        return "Série: " + titulo + " (" + ano + ") - Gênero: " + genero + 
+               " | Temporadas: " + numTemporadas + " | Episódios/Temporada: " + episodiosPorTemporada;
     }
 
     @Override
-    public String getDescricao() {
-        StringBuilder descricao = new StringBuilder();
-        descricao.append(String.format("Série: %s (%d), Gênero: %s, %d temporadas (%d eps/temp em média)",
-                getTitulo(), getAnoLancamento(), getGenero(),
-                temporadas, episodiosPorTemporada));
-
-        if (this.episodiosAdicionados != null && !this.episodiosAdicionados.isEmpty()) {
-            descricao.append(String.format(". Contém %d episódio(s) cadastrado(s):", this.episodiosAdicionados.size()));
-            int count = 0;
-            for (Episodio ep : this.episodiosAdicionados) {
-                if (count < 3) {
-                    descricao.append(String.format("\n  - %s", ep.toString()));
-                    count++;
-                } else {
-                    descricao.append("\n  - ...e mais.");
-                    break;
-                }
-            }
-        } else {
-            descricao.append(". Nenhum episódio cadastrado ainda.");
-        }
-        return descricao.toString();
+    public String toLinhaArquivo() {
+        return "S;" + titulo + ";" + genero + ";" + ano + ";" + numTemporadas + ";" + episodiosPorTemporada;
     }
+    
+    
+    @Override
+    public String paraLinhaArquivo() {
+        return String.format("S;%s;%s;%d;%d;%d", getTitulo(), getGenero(), getAnoLancamento(), getNumTemporadas(), getEpisodiosPorTemporada());
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

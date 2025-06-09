@@ -1,49 +1,63 @@
 package model;
 
-import java.io.Serializable; // Importar Serializable
-
-public class Filme extends Midia implements Serializable { // Implementar Serializable (embora herdado, é bom ser explícito)
-
-    private static final long serialVersionUID = 3L; // UID para Filme
-
+public class Filme extends Midia {
     private String diretor;
-    private int duracaoMinutos;
-    private String diretorio; // Campo que já existia
+    private int duracao; // em minutos
 
-    public Filme(String titulo, String genero, int ano, String diretor, int duracaoMinutos) {
+    public Filme(String titulo, String genero, int ano, String diretor, int duracao) {
         super(titulo, genero, ano);
         this.diretor = diretor;
-        this.duracaoMinutos = duracaoMinutos;
+        this.duracao = duracao;
     }
 
-    @Override
-    public String getDescricao() {
-        return String.format("Filme: %s (%d), Gênero: %s, Diretor: %s, Duração: %d min",
-                getTitulo(), getAnoLancamento(), getGenero(), diretor, duracaoMinutos);
-    }
-
-    // Getters e Setters para os campos específicos de Filme
     public String getDiretor() {
         return diretor;
+    }
+
+    public int getDuracaoMinutos() {
+        return duracao;
     }
 
     public void setDiretor(String diretor) {
         this.diretor = diretor;
     }
 
-    public int getDuracaoMinutos() {
-        return duracaoMinutos;
+    public void setDuracaoMinutos(int duracao) {
+        this.duracao = duracao;
     }
 
-    public void setDuracaoMinutos(int duracaoMinutos) {
-        this.duracaoMinutos = duracaoMinutos;
+    @Override
+    public String getDescricao() {
+        return "Filme: " + titulo + " (" + ano + ") - Gênero: " + genero + 
+               " | Diretor: " + diretor + " | Duração: " + duracao + " min";
     }
 
-    public String getDiretorio() {
-        return diretorio;
+    @Override
+    public String toLinhaArquivo() {
+        return "F;" + titulo + ";" + genero + ";" + ano + ";" + diretor + ";" + duracao;
     }
-
-    public void setDiretorio(String diretorio) {
-        this.diretorio = diretorio;
+    
+    
+    @Override
+    public String paraLinhaArquivo() {
+        return String.format("F;%s;%s;%d;%s;%d", getTitulo(), getGenero(), getAnoLancamento(), getDiretor(), getDuracaoMinutos());
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

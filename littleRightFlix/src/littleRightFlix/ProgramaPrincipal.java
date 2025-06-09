@@ -1,19 +1,27 @@
 package littleRightFlix;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
+
+import model.Filme;
 import model.Midia;
 
-public class Programa {
-
+public class ProgramaPrincipal {
 	public static void main(String[] args) {
 		// Correção do aviso de depreciação:
+	    Locale local = new Locale("pt", "BR");
 		Locale.setDefault(Locale.of("pt", "BR")); // Define o Locale padrão usando o método de fábrica
 		Scanner sc = new Scanner(System.in);
 
 		// Cria uma instância do Sistema, que já carrega os dados iniciais no construtor ou do arquivo
-		Sistema sistema = new Sistema();
+		Sistema sistema = null;
+		try {
+			sistema = new Sistema();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 		Sistema.exibirAsciiArt(); // Exibe a arte ASCII uma vez
 
@@ -22,7 +30,7 @@ public class Programa {
 
 		boolean sair = false;
 		while (!sair) {
-			exibirMenu();
+			Sistema.exibirMenu();
 			String opcao = sc.nextLine().trim(); // Lê a linha inteira e remove espaços
 
 			switch (opcao) {
@@ -107,8 +115,6 @@ public class Programa {
 					}
 					break;
 				case "0":
-					System.out.println("\nSalvando dados antes de sair...");
-					sistema.salvarDados(); // Chamada para salvar os dados (já estava correta)
 					sair = true;
 					System.out.println("Obrigado por usar o LittleRightFlix! Até mais!");
 					break;
@@ -125,25 +131,5 @@ public class Programa {
 		sc.close();
 	}
 
-	public static void exibirMenu() {
-		System.out.println("\n--- MENU LittleRightFlix ---");
-		System.out.println("1.  Adicionar Novo Filme");
-		System.out.println("2.  Adicionar Nova Série (com opção para episódios iniciais)");
-		System.out.println("3.  Alterar Mídia Existente");
-		System.out.println("4.  Remover Mídia");
-		System.out.println("5.  Listar Todas as Mídias");
-		System.out.println("6.  Listar Apenas Filmes");
-		System.out.println("7.  Listar Apenas Séries");
-		System.out.println("8.  Buscar Mídia por Título");
-		System.out.println("9.  Listar Todas as Mídias Ordenadas por Título");
-		System.out.println("10. Listar Todas as Mídias Ordenadas por Ano");
-		System.out.println("11. Listar Todas as Mídias Ordenadas por Gênero");
-		System.out.println("12. Gerenciar Episódios de uma Série");
-		System.out.println("13. Buscar/Filtrar Mídias por Gênero");
-		System.out.println("14. Buscar/Filtrar Mídias por Ano");
-		System.out.println("15. Buscar/Filtrar Filmes por Diretor");
-		System.out.println("16. Tentar Abrir Vídeo de Filme (da lista .txt)");
-		System.out.println("0.  Sair");
-		System.out.print("Escolha uma opção: ");
-	}
+	
 }

@@ -1,65 +1,44 @@
 package model;
 
-import java.io.Serializable; // 1. Importar Serializable
+public class Episodio {
+    private String tituloSerie;
+    private int temporada;
+    private int numero;
+    private String titulo;
 
-public class Episodio implements Serializable { // 2. Implementar Serializable
+    public Episodio(String tituloSerie, int temporada, int numero, String titulo) {
+        this.tituloSerie = tituloSerie;
+        this.temporada = temporada;
+        this.numero = numero;
+        this.titulo = titulo;
+    }
 
-	// 3. Adicionar serialVersionUID
-	private static final long serialVersionUID = 1L;
+    public String getTituloSerie() {
+        return tituloSerie;
+    }
 
-	private int numero;
-	private String titulo;
-	private String diretorio;
+    public int getTemporada() {
+        return temporada;
+    }
 
-	public Episodio(int numero, String titulo) {
-		if (numero <= 0) {
-			throw new IllegalArgumentException("O número do episódio deve ser positivo.");
-		}
-		if (titulo == null || titulo.trim().isEmpty()) {
-			throw new IllegalArgumentException("O título do episódio não pode ser vazio.");
-		}
-		this.numero = numero;
-		this.titulo = titulo;
-	}
+    public int getNumero() {
+        return numero;
+    }
 
-	// Getters
-	public int getNumero() {
-		return numero;
-	}
+    public String getTitulo() {
+        return titulo;
+    }
 
-	public String getTitulo() {
-		return titulo;
-	}
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
 
-	public String getDiretorio() {
-		return diretorio;
-	}
+    public String toLinhaArquivo() {
+        return "E;" + tituloSerie + ";" + numero + ";" + titulo;
+    }
 
-	// Setters
-	public void setNumero(int numero) {
-		if (numero <= 0) {
-			throw new IllegalArgumentException("O número do episódio deve ser positivo.");
-		}
-		this.numero = numero;
-	}
-
-	public void setTitulo(String titulo) {
-		if (titulo == null || titulo.trim().isEmpty()) {
-			throw new IllegalArgumentException("O título do episódio não pode ser vazio.");
-		}
-		this.titulo = titulo;
-	}
-
-	public void setDiretorio(String diretorio) {
-		this.diretorio = diretorio;
-	}
-
-	public String getDescricao() {
-		return String.format("Episódio %d: \"%s\"", numero, titulo);
-	}
-
-	@Override
-	public String toString() {
-		return String.format("Ep. %02d: %s", numero, titulo);
-	}
+    @Override
+    public String toString() {
+        return "Temporada " + temporada + " | Episódio " + numero + ": " + titulo;
+    }
 }

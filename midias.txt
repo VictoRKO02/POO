@@ -1,0 +1,23 @@
+F;Titanic;Romance/Drama;1997;James Cameron;195
+F;O Poderoso Chefao;Crime/Drama;1972;Francis Ford Coppola;175
+F;Prenda-me se for Capaz;Biografia/Crime;2002;Steven Spielberg;141
+F;O Dono do Jogo;Biografia/Drama;2015;Stephen Frears;115
+F;Vingadores: Ultimato;Acao/Ficcao;2019;Anthony e Joe Russo;181
+F;Um Sonho de Liberdade;Drama;1994;Frank Darabont;142
+F;Star Wars: A Vinganca dos Sith;Ficcao/Aventura;2005;George Lucas;140
+F;Mortal Kombat;Acao/Fantasia;2021;Simon McQuoid;110
+F;Dragon Ball Super: Broly;Animacao/Acao;2018;Tatsuya Nagamine;100
+F;Kronbauer: O Codificador;Documentario;2023;Arthur K.;90
+S;Death Note;Animacao/Suspense;2006;1;37
+E;Death Note;1;Renascer
+E;Death Note;2;Confronto
+E;Death Note;3;Negociacoes
+S;One Piece;Aventura/Fantasia;1999;21;50
+E;One Piece;1;Eu sou Luffy! O Homem que se Tornara o Rei dos Piratas!
+S;The Flash;Acao/Ficcao;2014;9;20
+S;Peaky Blinders;Crime/Drama;2013;6;6
+S;La Casa de Papel;Crime/Suspense;2017;5;8
+S;Vinland Saga;Animacao/Aventura;2019;2;24
+S;Breaking Bad;Crime/Drama;2008;5;13
+S;Attack on Titan;Animacao/Acao;2013;4;22
+S;aaaaa;comedia;2020;2;10
